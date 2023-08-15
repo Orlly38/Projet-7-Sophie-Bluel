@@ -1,3 +1,4 @@
+//CREATION DU FETCH POUR IMPORTER LES TRAVAUX
 const gallery = document.querySelector(".gallery");
 const worksApi = "http://localhost:5678/api/works";
 
@@ -15,3 +16,23 @@ fetch (worksApi)
             figure.appendChild (figcaption)
    }})
 
+//CREATION D'UN FILTRE POUR TRIER LES TRAVAUX
+const categoryWorks = "http://localhost:5678/api/categories";
+const filterDiv = document.querySelector(".filter");
+fetch (categoryWorks)
+    .then (reponse => reponse.json())
+    .then (categories => {
+    const filterWorks = new Set (categories)
+    const nouvelleCategorie = { id:0, name: "Tous" };
+    createFilterBtn(nouvelleCategorie);
+    console.log (filterWorks);
+    for (let category of filterWorks) {
+    createFilterBtn (category)
+    }   
+    })
+ 
+function createFilterBtn (category) {
+    let categoryLink = document.createElement ("a")
+    categoryLink.innerHTML = category.name;
+    filterDiv.appendChild (categoryLink)
+}
