@@ -209,9 +209,10 @@ footer nav ul {
 	font-family: 'Syne';
 	text-decoration: none;
 	color: #1D6154;
+	cursor:default;
 }
 
-.filter a:hover {
+.filter .selected {
 	background: #1D6154;
 	color: #FFF;
 }
