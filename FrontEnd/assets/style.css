@@ -22,6 +22,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: #FFFEF8;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -242,10 +243,6 @@ footer nav ul {
 	height: 51px;
 }
 
-header, main {
-	background-color: #FFFEF8;
-}
-
 #login #se_connecter {
 	margin-top: 47px;
 	display: flex;
@@ -258,10 +255,15 @@ header, main {
 	justify-content: center;
 	color: #3d3d3d;
 	font-weight: 500;
-	padding-bottom: 355px;
+	margin-bottom: 355px;
 }
 
 header ul a {
 	text-decoration: none;
 	color: black;
+}
+
+#loginLink {
+	font-size: 16px;
+	font-weight: 600;
 }
