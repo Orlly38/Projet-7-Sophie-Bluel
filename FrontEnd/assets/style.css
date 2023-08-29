@@ -267,3 +267,14 @@ header ul a {
 	font-size: 16px;
 	font-weight: 600;
 }
+
+#login_error {
+	padding-top: 47px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #B1663C;
+	font-size: 16px;
+	font-weight: 800;
+	display: none;
+}

@@ -27,6 +27,9 @@ fetch (CATEGORY_API)
             createFilterButton (category)
         }   
     })
+
+//MODIFICATION LOGIN EN LOGOUT SI NECESSAIRE
+gestion_login();
  
 //CREATION DES BOUTONS FILTRES   
 function createFilterButton (category) {
@@ -82,5 +85,22 @@ function removeSelectedClass() {
     let filters=document.querySelectorAll(".category");
     for (let i = 0; i <filters.length; i++) {
         filters[i].classList.remove ("selected")
+    }
+}
+
+function gestion_login () {
+    if (localStorage.getItem("token")) {
+        let loginLogoutLink= document.getElementById("login_logout");
+        loginLogoutLink.textContent="logout"
+        // DÉCONNEXION LORS DU CLIQUE SUR LOGOUT
+        loginLogoutLink.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // SUPPRESSION DU TOKEN DU LOCAL STORAGE
+            localStorage.removeItem("token");
+
+            // REDIRECTION VERS LA PAGE D'IDENTIFICATION 
+            window.location.href = "index.html";
+        });
     }
 }
