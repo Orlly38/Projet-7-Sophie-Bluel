@@ -57,7 +57,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px;
+	
 }
 section {
 	margin: 50px 0
@@ -277,4 +278,77 @@ header ul a {
 	font-size: 16px;
 	font-weight: 800;
 	display: none;
+}
+
+#modif_img_profil {
+	margin-left: 60px;
+	font-size: 14px;
+	display: none;
+}
+
+#modif_img_profil .fa-pen-to-square {
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+.bandeau_edition {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 59px;
+	background-color: black;
+	color: white;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin-bottom: 38px;
+}
+
+.bandeau_edition .fa-regular {
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	margin-right: 11px;
+}
+
+.bandeau_edition #publier_changement {
+	width: 216px;
+	background-color: white;
+	color: black;
+	padding: 11px 200px 11px 23px;
+	font-size: 14px;
+	margin-left: 21px;
+	margin-right: 0;
+}
+
+#edition {
+	display: none;
+}
+
+h2 #modif_projet {
+	color : black;
+	font-size: 14px;
+	font-weight: 400;
+	margin-left: 31px;
+	display: none;
+	text-decoration: none;
+	font-family: 'Work Sans';
+}
+
+#modif_projet .fa-regular {
+	margin-right: 10px;
+}
+
+#modal1 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 630px;
+	height: 731px;
+	background: rgba (0,0,0,0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
