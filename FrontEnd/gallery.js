@@ -90,14 +90,18 @@ function removeSelectedClass() {
 
 function gestion_login () {
     if (localStorage.getItem("token")) {
+        //POUR CHANGER LE MOT LOGIN EN LOGOUT
         let loginLogoutLink= document.getElementById("login_logout");
         loginLogoutLink.textContent="logout"
-        let modif_profil=document.getElementById("modif_img_profil");
-        modif_profil.style.display="block"
+        //POUR FAIRE APPARITRE LE BANDEAU EDITION
         let bandeau_edit=document.getElementById("edition");
         bandeau_edit.style.display="flex"
+        //POUR FAIRE APPARAITRE LA MODIFICATION DES PROJETS
         let projet_modif=document.getElementById("modif_projet")
         projet_modif.style.display="inline"
+        //POUR CACHER LES FILTRES EN MODE EDITION
+        let button_filter=document.querySelector(".filter")
+        button_filter.style.display="none"
         // DÉCONNEXION LORS DU CLIQUE SUR LOGOUT
         loginLogoutLink.addEventListener("click", function (event) {
             event.preventDefault();
@@ -110,44 +114,4 @@ function gestion_login () {
         });
     }
 }
-
-// GESTION DE LA MODALE
-let modal = null
-//POUR OUVRIR LA BOITE MODALE
-const OPEN_MODAL = function (e) {
-    e.preventDefault()
-    const TARGET = document.querySelector(e.target.getAttribute('href'))
-    TARGET.style.display=null
-    TARGET.removeAttribute('aria-hidden')       
-    TARGET.setAttribute ('aria-modal', 'true')
-    modal=TARGET
-    modal.addEventListener('click', CLOSE_MODAL)
-    //modal.querySelector('js-modal-close').addEventListener('click', CLOSE_MODAL)
-}
-//POUR FERMER LA BOITE MODAL
-const CLOSE_MODAL = function (e) {
-    if (modal=null) return
-    e.preventDefault
-    modal.style.display="none"
-    modal.setAttribute ('aria-hidden', 'true')
-    modal.removeAttribute ('aria-modal')
-    modal.removeEventListener('click',CLOSE_MODAL)
-    modal.querySelector('js-modal-close').removeEventListener ('click',CLOSE_MODAL)
-    modal.querySelector('js-modal-stop').removeEventListener ('click', STOP_PROPAGATION)
-
-  
-    window.addEventListener('keydown', function (e) {
-        if (e.key==="Escape" || e.key==="Esc"){
-            CLOSE_MODAL(e)
-        }
-    })
-}
-
-const STOP_PROPAGATION=function (e) {
-e.STOP_PROPAGATION()
-}
-
-document.querySelectorAll('.js-modal').forEach(a=>{
-    a.addEventListener('click', OPEN_MODAL)
-})
 
