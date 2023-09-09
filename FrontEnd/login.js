@@ -26,22 +26,24 @@ function loginUser(){
          },
           body: JSON.stringify(user)
     })
-    .then (response => loginResponse(response))
+    .then(response => {
+        if (response.status===200){
+            //SI LOGIN OK ON CONVERTI EN JSON 
+            return response.json();
+        }else{
+            //SI EMAIL OU MDP KO ON AFFICHE MESSAGE ERREUR
+            loginError=document.getElementById("login_error");
+            loginError.innerHTML="E-mail ou mot de passe incorrect";
+            loginError.style.display="flex";
+        }
+    })
+    .then(data=>{
+        if(data){ //SI LOGIN OK 
+            // STOCKAGE DU TOKEN DANS LE LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            // REDIRECTION VERS LA PAGE D'ACCUEIL
+             window.location.href = "index.html";
+        }
+    })
 }   
-
-function loginResponse(response) {
-    //SI L'EMAIL ET LE MOT DE PASSE SONT CORRECTS
-    if (response.status===200){
-        // STOCKAGE DU TOKEN DANS LE LOCAL STORAGE
-        localStorage.setItem("token", response.token);
-        // REDIRECTION VERS LA PAGE D'ACCUEIL
-        window.location.href = "index.html";
-    }
-    //SI IL Y A UNE ERREUR DANS L'EMAIL OU LE MOT DE PASSE
-    else {
-        let loginError=document.getElementById("login_error");
-        loginError.innerHTML="E-mail ou mot de passe incorrect";
-        loginError.style.display="flex";
-    }
-}
 

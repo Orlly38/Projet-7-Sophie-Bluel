@@ -344,8 +344,6 @@ h2 #modif_projet {
 .js-modal-close {
 	background-color: white;
 	border: none;
-	height: 24px;
-	width: 24px;
 	margin-top: 26px;
 	margin-right: 30px;
 	position: absolute;
@@ -353,8 +351,31 @@ h2 #modif_projet {
 }
 
 .modal-wrapper h3 {
+	position: relative;
 	width: 100%;
+	height: 30px;
 	margin-top: 60px;
 	display: flex;
 	justify-content: center;
+	font-size: 26px;
+}
+
+.modal-gallery {
+	padding: 46px 105px 46px 105px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	row-gap: 27.5px;
+	column-gap: 9px;
+}
+
+.modal-gallery figure {
+	position: relative;
+}
+.modal-gallery img{
+	width: 76.61px;
+	height: 102.57px;
+}
+
+.modal-gallery figcaption{
+	display:none;
 }

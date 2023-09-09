@@ -4,16 +4,20 @@ const WORKS_API = BASE_URL+"works";
 const CATEGORY_API = BASE_URL+"categories";
 const GALLERY_DIV = document.querySelector(".gallery");
 const FILTER_DIV = document.querySelector(".filter");
-let workList;
 
-//CREATION DU FETCH POUR IMPORTER LES TRAVAUX
-fetch (WORKS_API)
-    .then (reponse => reponse.json())
-    .then (works => { //STOCKER WORKS VARIABLES GLOBALE
-        workList=works
-        for (let i=0; i<works.length; i++){
-            createWork (works[i])   
-   }})
+
+fetchWorks(GALLERY_DIV,false);
+
+function fetchWorks(targetDiv, deleteButton){
+    //CREATION DU FETCH POUR IMPORTER LES TRAVAUX
+    fetch (WORKS_API)
+        .then (reponse => reponse.json())
+        .then (works => { //STOCKER WORKS VARIABLES GLOBALE
+            workList=works
+            for (let i=0; i<works.length; i++){
+                createWork (works[i], targetDiv, deleteButton)   
+    }})
+}
 
 //RECUPERATION DES CATEGORIES
 fetch (CATEGORY_API)
@@ -53,7 +57,7 @@ function filterWorksByCategory(categoryId) {
     //AFFICHER UNIQUEMENT WORKS AVEC CATEGORY=CATEGORYID OU TOUS
     for (let i=0; i<workList.length; i++){
         if (workList[i].categoryId===categoryId || categoryId===0){
-            createWork (workList[i])   
+            createWork (workList[i],GALLERY_DIV,false)   
         }  
     }
 
@@ -63,16 +67,28 @@ function filterWorksByCategory(categoryId) {
 }
  
 
-//CREATION D'UN PROJET
-function createWork (work) {
+//AFFICHAGE D'UN PROJET
+function createWork (work, targetDiv,deleteButton) {
     let figure = document.createElement ("figure");
     let imgWorks = document.createElement ("img");
     let figcaption = document.createElement ("figcaption");
     imgWorks.src = work.imageUrl;
     figcaption.innerHTML = work.title;
-    GALLERY_DIV.appendChild (figure)
+    targetDiv.appendChild (figure)
     figure.appendChild (imgWorks)
     figure.appendChild (figcaption)
+    if (deleteButton) { // SI ON A DEMANDE LA CREATION D'UN BOUTON DE SUPPR (deleteButton == true)
+        createDeleteButton(figure,work)
+    }
+}
+
+//CREATION D'UN BOUTON SUPPRIMER POUR CHAQUE IMAGE
+function createDeleteButton (figure,work){
+    let button = document.createElement('i');
+    button.classList.add("fa-regular", "fa-trash-can");
+    button.addEventListener('click', DELETE_WORK)
+    button.id = work.id
+    figure.appendChild(button)
 }
 
 //AJOUT DE LA CLASSE SELECTED A UNE CATEGORY
