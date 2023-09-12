@@ -320,6 +320,8 @@ h2 #modif_projet {
 	margin-right: 10px;
 }
 
+
+/**MODALE**/
 #modal1 {
 	position: fixed;
 	left: 0;
@@ -337,7 +339,7 @@ h2 #modif_projet {
 	justify-content: end;
 	margin-left: 200px;
 	width: 630px;
-	height: 531px;
+	height: 688px;
 	border-radius: 10px;
 }
 
@@ -351,13 +353,13 @@ h2 #modif_projet {
 }
 
 .modal-wrapper h3 {
-	position: relative;
-	width: 100%;
+	position: absolute;
 	height: 30px;
 	margin-top: 60px;
 	display: flex;
 	justify-content: center;
 	font-size: 26px;
+	width: 630px;
 }
 
 .modal-gallery {
@@ -366,16 +368,63 @@ h2 #modif_projet {
 	grid-template-columns: repeat(5, 1fr);
 	row-gap: 27.5px;
 	column-gap: 9px;
+	border-radius: 10px;
 }
 
 .modal-gallery figure {
 	position: relative;
+	Width: 78.63px;
+	Height: 139.87px;
+	margin-top: 46px;
 }
 .modal-gallery img{
 	width: 76.61px;
 	height: 102.57px;
+	margin-top: 46px;
 }
 
 .modal-gallery figcaption{
 	display:none;
+}
+
+.fa-trash-can {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 9px;
+	color: white;
+	width: 17px;
+	height: 17px;
+	background-color: black;
+	border-radius: 2px;
+	position: relative;
+	bottom: 98px;
+	left: 54.14px;
+	cursor: pointer;
+}
+
+/*.separation {
+	display: flex;
+	background-color: #b3b3b3;
+	height: 1px;
+	width: 420px;
+	margin-left: 105px;
+}*/
+
+#ajout_projet {
+	display: flex;
+	justify-content: center;
+	margin: 48px auto 54px auto;
+	background: #1D6154;
+	border-radius: 60px;
+	color: white;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 14px;
+	border: none;
+	width: 630px;
+	height: 36px;
+	cursor: pointer;
+	margin-top: 617px;
+	text-decoration: none;
 }
