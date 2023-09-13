@@ -7,9 +7,8 @@ let modal = null
 //POUR OUVRIR LA BOITE MODALE
 const OPEN_MODAL = function (e) {
     e.preventDefault()
-    const TARGET = document.querySelector(e.target.getAttribute('href'))
-    TARGET.style.display=null
-    modal=TARGET
+    modal=document.querySelector("#modal1");
+    modal.style.display=null
     modal.addEventListener('click', CLOSE_MODAL)
     BUTTON_CLOSE.addEventListener('click', CLOSE_MODAL)
     let test_affich_modal=document.querySelector(".modal-wrapper")
@@ -28,18 +27,14 @@ const CLOSE_MODAL = function (e) {
     modal.style.display="none"
     modal.removeEventListener('click',CLOSE_MODAL)
     BUTTON_CLOSE.removeEventListener ('click',CLOSE_MODAL)
-    window.addEventListener('keydown', function (e) {
-        if (e.key==="Escape" || e.key==="Esc"){
-            CLOSE_MODAL(e)
-        }
-    })
+
 }
 
 const STOP_PROPAGATION=function (e) {
 e.STOP_PROPAGATION()
 }
 
-document.querySelectorAll('.js-modal').forEach(a=>{
+document.querySelectorAll('#modif_projet').forEach(a=>{
     a.addEventListener('click', OPEN_MODAL)
 })
 

@@ -50,19 +50,30 @@
 					<h3>Galerie photo</h3>
 					<div class="modal-gallery">
 				</div>
-
-					<div class="separation"></div>
-					
-						<a href="modal2" class="js-modal" id="ajout_projet">Ajouter une photo </a>
-						<aside id="modal1" style="display:none;">
-							<div class="modal-wrapper" style="display:none;">
-								<button class="js-modal-close"><i class="fa-solid fa-x"></i></button>
-							</div>
-						<div class="modal-new-photo">
-					</aside>
-				</div>
+				<div class="separation"></div>
+				<a href="#modal2" class="js-modal" id="ajout_projet">Ajouter une photo </a>
 			</aside>
-			<div class="filter">
+			<aside id="modal2" style="display:none;">
+				<div class="modal-wrapper-new" style="display:none;">
+					<div class="top">
+						<div><button class="modal-back"><i class="fa-solid fa-arrow-left"></i></button></div>
+						<div><button class="js-modal-close-new"><i class="fa-solid fa-x"></i></button></div>
+					</div>
+					<div class="title"><h3>Ajout photo</h3></div>
+					<div class="form">
+						<div class="modal-new-photo"></div>
+						<div class="modal-new-photo-form">
+							<label for="titre">Titre</label>
+							<input name="titre" type="text"/>
+							<label for="categorie">Catégorie</label>
+							<input name="categorie" type="text"/>
+							<button>Valider</button>
+						</div>
+					</div>
+				</div>
+				
+			</aside>
+		<div class="filter">
 		</div>
 		<div class="gallery">
 		</div>
