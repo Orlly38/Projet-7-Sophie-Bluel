@@ -43,14 +43,19 @@
 	</section>
 	
 	<section id="portfolio">
+		
 		<h2>Mes Projets <a href="#modal1"  class="js-modal" id="modif_projet"><i class="fa-regular fa-pen-to-square"></i>modifier</a></h2>
 			<aside id="modal1" style="display:none;">
 				<div class="modal-wrapper" style="display:none;">
-					<button class="js-modal-close"><i class="fa-solid fa-x"></i></button>
-					<h3>Galerie photo</h3>
+					<div class="top1">
+						<div><button class="js-modal-close-1"><i class="fa-solid fa-x"></i></button></div>
+					</div>
+					<div class="title"><h3>Galerie photo</h3></div>
 					<div class="modal-gallery">
 				</div>
-				<div class="separation"></div>
+
+				<div id="separation1"></div>
+
 				<a href="#modal2" class="js-modal" id="ajout_projet">Ajouter une photo </a>
 			</aside>
 			<aside id="modal2" style="display:none;">
@@ -61,13 +66,18 @@
 					</div>
 					<div class="title"><h3>Ajout photo</h3></div>
 					<div class="form">
-						<div class="modal-new-photo"></div>
+						<div class="modal-new-photo"> 
+							<i class="fa-regular fa-image"></i>
+							<button class="button-add-photo">+ Ajouter photo</button>
+							<div class="precision">jpg, png : 4mo max</div>
+						</div>
 						<div class="modal-new-photo-form">
 							<label for="titre">Titre</label>
-							<input name="titre" type="text"/>
+							<input name="titre" class="input-titre" type="text"/>
 							<label for="categorie">Catégorie</label>
-							<input name="categorie" type="text"/>
-							<button>Valider</button>
+							<select name="categorie" class="select-category" type="text"></select>
+							<div id="separation2"></div>
+							<button class="button-submit">Valider</button>
 						</div>
 					</div>
 				</div>

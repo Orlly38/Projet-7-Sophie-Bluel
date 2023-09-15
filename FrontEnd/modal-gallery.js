@@ -1,6 +1,6 @@
 //CONSTANTES
 const GALLERY_MODALE = document.querySelector(".modal-gallery");
-const BUTTON_CLOSE = document.querySelector('.js-modal-close');
+const BUTTON_CLOSE = document.querySelector('.js-modal-close-1');
 
 // GESTION DE LA MODALE
 let modal = null
