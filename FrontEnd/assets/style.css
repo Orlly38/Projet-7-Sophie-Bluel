@@ -511,6 +511,7 @@ h2 #modif_projet {
 	border-radius: 3px;
 	margin-bottom: 30px;
 	flex-direction: column;
+	align-items: center;
 }
 
 .modal-new-photo-form {
@@ -585,7 +586,7 @@ h2 #modif_projet {
 	color: #306685;
 	font-size: 14px;
 	margin-top: 6px;
-	margin-left: 123px;
+	cursor: pointer;
 }
 
 .precision {
@@ -595,4 +596,14 @@ h2 #modif_projet {
 	justify-content: center;
 	margin-top: 7px;
 	font-family: "Work Sans";
+}
+
+.picture-selection{
+	background-color: #E8F1F6;
+}
+
+#picture-preview {
+	display: none;
+	max-width: 129px;
+	max-height: 193px;
 }
