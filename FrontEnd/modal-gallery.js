@@ -61,9 +61,13 @@ function deleteWorkFetch(idWork){
             'Authorization': `Bearer ${token}`,
         }
     })
-    .then (reponse => {
-        //A FAIRE : SUPPRIMER DU DOM DANS gallery et gallery-modal
-        //A FAIRE : ENLEVER REFRESH
+    .then (response => {
+        if (response.status===200 || response.status===201 || response.status===204){
+            refreshWorks(GALLERY_MODALE, true); //REAFFICHAGE TRAVAUX DANS MODALE
+            refreshWorks(GALLERY_DIV,false); //REAFFICHAGE TRAVAUX DANS INDEX
+        }else {
+            alert ("Erreur lors de la suppression du projet.")
+        }
     })
 
 }

@@ -8,6 +8,10 @@ const FILTER_DIV = document.querySelector(".filter");
 
 fetchWorks(GALLERY_DIV,false);
 
+function refreshWorks(targetDiv, deleteButton){
+    targetDiv.innerHTML='';
+    fetchWorks(targetDiv,deleteButton);
+}
 function fetchWorks(targetDiv, deleteButton){
     //CREATION DU FETCH POUR IMPORTER LES TRAVAUX
     fetch (WORKS_API)

@@ -25,6 +25,7 @@ const OPEN_MODAL_NEW = function (e) {
     let modal_wrapper=document.querySelector(".modal-wrapper-new")
     modal_wrapper.style.display="flex"
     resetPhotoSelection();
+    resetForm();
     loadCategories();
 }
 
@@ -37,7 +38,6 @@ const CLOSE_MODAL_NEW = function (e) {
     modal_new.style.display="none"
     modal_new.removeEventListener('click',CLOSE_MODAL_NEW)
     BUTTON_CLOSE_NEW.removeEventListener ('click',CLOSE_MODAL_NEW)
-
 }
 
 //BOUTON RETOUR
@@ -71,9 +71,15 @@ function resetPhotoSelection(){
     PICTURE_PREVIEW.style.display="none"
     PICTURE_SELECTION.style.display ="block";
 }
+//REMISE A ZERO FORMULAIRE UPLOAD
+function resetForm(){
+    CATEGORIES_SELECT.value= 0;
+    TITLE_NEW_PHOTO.value ="";
+}
 
 //CHARGEMENT CATEGORIES DEPUIS API
 function loadCategories(){
+    CATEGORIES_SELECT.innerHTML = ''; //ON VIDE AVANT DE FETCH POUR NE PAS ACCUMULER LES CATEGORIES
     let option = document.createElement("option");
     option.value = 0;
     option.text = "";
@@ -100,7 +106,7 @@ const UPLOAD_WORK = function(){
     formData.append("image", INPUT_PICTURE.files[0]);
     formData.append("title", TITLE_NEW_PHOTO.value);
     formData.append("category", CATEGORIES_SELECT.value);
-
+    
     fetch (WORKS_API, {
         method: "POST",
         headers: {
@@ -111,16 +117,17 @@ const UPLOAD_WORK = function(){
     })
     .then (response => {
         if (response.status===200 ||response.status===201){
-            alert('succes');
+            resetPhotoSelection();//REMISE A ZERO APERCU PHOTO
+            resetForm();//REMISE A ZERO FORMULAIRE
+            refreshWorks(GALLERY_MODALE, true); //REAFFICHAGE TRAVAUX DANS MODALE
+            refreshWorks(GALLERY_DIV,false); //REAFFICHAGE TRAVAUX DANS INDEX
+            VERIFICATION();
         }else if (response.status===401){
-            alert('session expirée ou invalide');
+            alert('Session expirée ou invalide');
         }else{
-            alert('echec technique inconnu');
+            alert('Erreur technique inconnue');
         }
         })
-
-    
-
     
 }
 
