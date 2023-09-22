@@ -5,8 +5,6 @@ const LOGIN_BUTTON = document.getElementById("se_connecter")
 
 // AJOUT D'UN EVENEMENT AU CLIC POUR SE CONNECTER
 LOGIN_BUTTON.addEventListener("click", function() {
-    // EFFACE LE MESSAGE D'ERREUR AVANT NOUVELLE TENTATIVE
-   // document.getElementById("login_error").innerHTML=""
     loginUser();
 });
 
@@ -39,8 +37,8 @@ function loginUser(){
     })
     .then(data=>{
         if(data){ //SI LOGIN OK 
-            // STOCKAGE DU TOKEN DANS LE LOCAL STORAGE
-            localStorage.setItem("token", data.token);
+            // STOCKAGE DU TOKEN DANS LE SESSION STORAGE
+            sessionStorage.setItem("token", data.token);
             // REDIRECTION VERS LA PAGE D'ACCUEIL
              window.location.href = "index.html";
         }

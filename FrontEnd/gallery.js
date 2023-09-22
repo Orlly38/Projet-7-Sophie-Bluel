@@ -5,19 +5,22 @@ const CATEGORY_API = BASE_URL+"categories";
 const GALLERY_DIV = document.querySelector(".gallery");
 const FILTER_DIV = document.querySelector(".filter");
 
-
+//AFFICHE LES TRAUX DANS LA GALERIE
 fetchWorks(GALLERY_DIV,false);
 
+//RAFRAICHIT LES TRAVAUX
 function refreshWorks(targetDiv, deleteButton){
     targetDiv.innerHTML='';
     fetchWorks(targetDiv,deleteButton);
 }
+
+//RECUPERATION DES TRAVAUX
 function fetchWorks(targetDiv, deleteButton){
     //CREATION DU FETCH POUR IMPORTER LES TRAVAUX
     fetch (WORKS_API)
         .then (reponse => reponse.json())
-        .then (works => { //STOCKER WORKS VARIABLES GLOBALE
-            workList=works
+        .then (works => { 
+            workList=works //STOCKAGE DES TRAVAUX DANS VARIABLES WORKLIST (POUR REUTILISATION DANS FILTRES)
             for (let i=0; i<works.length; i++){
                 createWork (works[i], targetDiv, deleteButton)   
     }})
@@ -109,11 +112,11 @@ function removeSelectedClass() {
 }
 
 function gestion_login () {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
         //POUR CHANGER LE MOT LOGIN EN LOGOUT
         let loginLogoutLink= document.getElementById("login_logout");
         loginLogoutLink.textContent="logout"
-        //POUR FAIRE APPARITRE LE BANDEAU EDITION
+        //POUR FAIRE APPARAITRE LE BANDEAU EDITION
         let bandeau_edit=document.getElementById("edition");
         bandeau_edit.style.display="flex"
         //POUR FAIRE APPARAITRE LA MODIFICATION DES PROJETS
@@ -126,8 +129,8 @@ function gestion_login () {
         loginLogoutLink.addEventListener("click", function (event) {
             event.preventDefault();
 
-            // SUPPRESSION DU TOKEN DU LOCAL STORAGE
-            localStorage.removeItem("token");
+            // SUPPRESSION DU TOKEN DU SESSION STORAGE
+            sessionStorage.removeItem("token");
 
             // REDIRECTION VERS LA PAGE D'ACCUEIL
             window.location.href = "index.html";

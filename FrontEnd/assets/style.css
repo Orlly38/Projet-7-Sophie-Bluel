@@ -249,6 +249,7 @@ footer nav ul {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 }
 
 #login a {
@@ -337,7 +338,6 @@ h2 #modif_projet {
 .modal-wrapper,.modal-wrapper-new  {
 	display: flex;
 	justify-content: end;
-	margin-left: 200px;
 	width: 630px;
 	height: 688px;
 	border-radius: 10px;
@@ -405,10 +405,9 @@ h2 #modif_projet {
 }
 
 .modal-gallery {
-	padding: 46px 105px 46px 105px;
+	padding: 1px 99px 36px 105px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	row-gap: 27.5px;
 	column-gap: 9px;
 	border-radius: 10px;
 	background-color: white;
@@ -423,7 +422,7 @@ h2 #modif_projet {
 .modal-gallery img{
 	width: 76.61px;
 	height: 102.57px;
-	margin-top: 46px;
+	margin-top: 35px;
 }
 
 .modal-gallery figcaption{
@@ -466,7 +465,8 @@ h2 #modif_projet {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 48px auto 54px auto;
+	margin-top: 38px;
+	margin-left: 195px;
 	background: #1D6154;
 	border-radius: 60px;
 	color: white;
@@ -475,7 +475,7 @@ h2 #modif_projet {
 	font-size: 14px;
 	border: none;
 	width: 237px;
-	height: 50px;
+	height: 36px;
 	cursor: pointer;
 	text-decoration: none;
 }

@@ -10,12 +10,12 @@ const CATEGORIES_SELECT = document.querySelector('.select-category');
 const TITLE_NEW_PHOTO = document.querySelector('.input-titre');
 const BUTTON_SUBMIT = document.querySelector('.button-submit');
 
-// GESTION DE LA MODALE
 let modal_new = null
-//POUR OUVRIR LA BOITE MODALE
+
+//FONCTION OUVERTURE BOITE MODALE
 const OPEN_MODAL_NEW = function (e) {
     e.preventDefault()
-    //ON CACHE LA MODALE TRAVAUX
+    //ON CACHE LA MODAL-GALLERY
     modal.style.display="none";
     //ON AFFICHE LA MODALE DE CREATION
     modal_new=document.querySelector("#modal2");
@@ -24,12 +24,12 @@ const OPEN_MODAL_NEW = function (e) {
     BUTTON_CLOSE_NEW.addEventListener('click', CLOSE_MODAL_NEW)
     let modal_wrapper=document.querySelector(".modal-wrapper-new")
     modal_wrapper.style.display="flex"
-    resetPhotoSelection();
-    resetForm();
+    resetPhotoSelection(); //REMISE A VIDE DE LA SELECTION PHOTO
+    resetForm();// REMISE A VIDE FORMULAIRE AJOUT PHOTO 
     loadCategories();
 }
 
-//POUR FERMER LA BOITE MODAL
+//FONCTION FERMETURE BOITE MODALE
 const CLOSE_MODAL_NEW = function (e) {
     if (modal_new==null) return
     //SI ON CLIQUE SUR AUTRE CHOSE QUE LA MODALE OU LE BOUTON ON NE VEUT PAS FERMER
@@ -71,6 +71,7 @@ function resetPhotoSelection(){
     PICTURE_PREVIEW.style.display="none"
     PICTURE_SELECTION.style.display ="block";
 }
+
 //REMISE A ZERO FORMULAIRE UPLOAD
 function resetForm(){
     CATEGORIES_SELECT.value= 0;
@@ -83,7 +84,7 @@ function loadCategories(){
     let option = document.createElement("option");
     option.value = 0;
     option.text = "";
-    CATEGORIES_SELECT.add(option);
+    CATEGORIES_SELECT.add(option);// AJOUT CATEGORIE VIDE DANS LE FORMULAIRE
     fetch (CATEGORY_API)
     .then (reponse => reponse.json())
     .then (categories => {
@@ -100,7 +101,7 @@ function loadCategories(){
 //UPLOAD NOUVEAU PROJET
 const UPLOAD_WORK = function(){
 
-    let token = localStorage.getItem("token");
+    let token = sessionStorage.getItem("token");
 
     const formData = new FormData();
     formData.append("image", INPUT_PICTURE.files[0]);

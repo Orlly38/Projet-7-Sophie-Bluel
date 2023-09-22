@@ -1,24 +1,25 @@
 //CONSTANTES
 const GALLERY_MODALE = document.querySelector(".modal-gallery");
 const BUTTON_CLOSE = document.querySelector('.js-modal-close-1');
+const MODALE_WRAPPER = document.querySelector(".modal-wrapper");
+const BUTTON_MODIF_WORKS = document.querySelector('#modif_projet');
 
-// GESTION DE LA MODALE
 let modal = null
-//POUR OUVRIR LA BOITE MODALE
+
+//FONCTION OUVERTURE BOITE MODALE
 const OPEN_MODAL = function (e) {
     e.preventDefault()
     modal=document.querySelector("#modal1");
     modal.style.display=null
     modal.addEventListener('click', CLOSE_MODAL)
     BUTTON_CLOSE.addEventListener('click', CLOSE_MODAL)
-    let test_affich_modal=document.querySelector(".modal-wrapper")
-    test_affich_modal.style.display="flex"
+    MODALE_WRAPPER.style.display="flex"
     GALLERY_MODALE.innerHTML = '';
     fetchWorks(GALLERY_MODALE, true);
 }
 
 
-//POUR FERMER LA BOITE MODAL
+//FONCTION FERMETURE BOITE MODALE
 const CLOSE_MODAL = function (e) {
     if (modal==null) return
     //SI ON CLIQUE SUR AUTRE CHOSE QUE LA MODALE OU LE BOUTON ON NE VEUT PAS FERMER
@@ -30,29 +31,25 @@ const CLOSE_MODAL = function (e) {
 
 }
 
-const STOP_PROPAGATION=function (e) {
-e.STOP_PROPAGATION()
-}
+//AJOUT LISTENER SUR CLIQUE BOUTON MODIFIER POUR APPELER OUVERTURE MODALE  
+BUTTON_MODIF_WORKS.addEventListener('click', OPEN_MODAL)
 
-document.querySelectorAll('#modif_projet').forEach(a=>{
-    a.addEventListener('click', OPEN_MODAL)
-})
-
-
-const DELETE_WORK = async function (e) {
+//FONCTION SUPPRESSION TRAVAUX
+const DELETE_WORK = function (e) {
     const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce projet ?");
 
     if (confirmation) {
         try {
-            await deleteWorkFetch(e.target.id);
+            deleteWorkFetch(e.target.id);
         } catch (error) {
             console.error("Erreur lors de la suppression du projet:", error);
         }
     }
 }
 
+//APPEL API SUPPRESSION TRAVAUX
 function deleteWorkFetch(idWork){
-    let token = localStorage.getItem("token");
+    let token = sessionStorage.getItem("token");
 
     fetch (WORKS_API+'/'+idWork, {
         method: "DELETE",
