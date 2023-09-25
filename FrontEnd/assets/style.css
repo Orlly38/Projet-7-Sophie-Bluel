@@ -212,7 +212,7 @@ footer nav ul {
 	font-family: 'Syne';
 	text-decoration: none;
 	color: #1D6154;
-	cursor:default;
+	cursor: pointer;
 }
 
 .filter .selected {

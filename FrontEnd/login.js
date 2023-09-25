@@ -14,7 +14,7 @@ function loginUser(){
     let user = {
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
-    };
+    }; 
 
     //APPEL DE L'API POUR VERIFIER L'E-MAIL ET LE MOT DE PASSE
     fetch (USERS_API,{

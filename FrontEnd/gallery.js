@@ -4,8 +4,8 @@ const WORKS_API = BASE_URL+"works";
 const CATEGORY_API = BASE_URL+"categories";
 const GALLERY_DIV = document.querySelector(".gallery");
 const FILTER_DIV = document.querySelector(".filter");
-
-//AFFICHE LES TRAUX DANS LA GALERIE
+ 
+//AFFICHE LES TRAVAUX DANS LA GALERIE
 fetchWorks(GALLERY_DIV,false);
 
 //RAFRAICHIT LES TRAVAUX
@@ -26,6 +26,21 @@ function fetchWorks(targetDiv, deleteButton){
     }})
 }
 
+//AFFICHAGE D'UN PROJET
+function createWork (work, targetDiv,deleteButton) {
+    let figure = document.createElement ("figure");
+    let imgWorks = document.createElement ("img");
+    let figcaption = document.createElement ("figcaption");
+    imgWorks.src = work.imageUrl;
+    figcaption.innerHTML = work.title;
+    figure.appendChild (imgWorks)
+    figure.appendChild (figcaption)
+    targetDiv.appendChild (figure)
+    if (deleteButton) { // SI ON A DEMANDE LA CREATION D'UN BOUTON DE SUPPR (deleteButton == true)
+        createDeleteButton(figure,work)
+    }
+}
+
 //RECUPERATION DES CATEGORIES
 fetch (CATEGORY_API)
     .then (reponse => reponse.json())
@@ -39,9 +54,6 @@ fetch (CATEGORY_API)
         }   
     })
 
-//MODIFICATION LOGIN EN LOGOUT SI NECESSAIRE
-gestion_login();
- 
 //CREATION DES BOUTONS FILTRES   
 function createFilterButton (category) {
     let categoryLink = document.createElement ("a") 
@@ -73,21 +85,9 @@ function filterWorksByCategory(categoryId) {
     addSelectedClass(categoryId) 
 }
  
+//MODIFICATION LOGIN EN LOGOUT SI NECESSAIRE
+gestion_login();
 
-//AFFICHAGE D'UN PROJET
-function createWork (work, targetDiv,deleteButton) {
-    let figure = document.createElement ("figure");
-    let imgWorks = document.createElement ("img");
-    let figcaption = document.createElement ("figcaption");
-    imgWorks.src = work.imageUrl;
-    figcaption.innerHTML = work.title;
-    targetDiv.appendChild (figure)
-    figure.appendChild (imgWorks)
-    figure.appendChild (figcaption)
-    if (deleteButton) { // SI ON A DEMANDE LA CREATION D'UN BOUTON DE SUPPR (deleteButton == true)
-        createDeleteButton(figure,work)
-    }
-}
 
 //CREATION D'UN BOUTON SUPPRIMER POUR CHAQUE IMAGE
 function createDeleteButton (figure,work){
